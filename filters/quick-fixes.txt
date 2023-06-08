@@ -1,7 +1,7 @@
 ! Title: uBlock₀ filters – Quick fixes
 ! Description: Immediate, temporary filters to fix websites
 ! Expires: 12 hours
-! Last modified: Tue, 06 Jun 2023 09:28:09 +0000
+! Last modified: Thu, 08 Jun 2023 03:38:53 +0000
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! Homepage: https://github.com/uBlockOrigin/uAssets
 ! Forums: https://github.com/uBlockOrigin/uAssets/issues
@@ -11,10 +11,9 @@
 /^https:\/\/[a-z]{2,14}\.wp\.pl\/[a-zA-Z0-9_-]{200,915}$/$script,domain=nowy.tlen.pl|poczta.o2.pl|profil.wp.pl
 
 ! aternos anti adb
-aternos.org##.sidebar:style(width: 1.71px !important; padding: 0px !important;)
-aternos.org##.header-link-exaroton-link:style(pointer-events: none !important; max-height: 0.08mm !important; padding: 0px !important;)
-aternos.org##.ad-dfp:style(min-height: 0.0031px !important; height: 0.0031px !important;)
-aternos.org#@#.header-link-exaroton:style(filter: opacity(0) !important;)
+aternos.org##.header-link-exaroton-link:style(pointer-events: none !important; max-height: 0.027mm !important; padding: 0px !important;)
+aternos.org##.sidebar:style(width: 1.74px !important; padding: 0px !important;)
+aternos.org##.ad-dfp:style(min-height: 0.0037px !important; height: 0.0037px !important;)
 @@||securepubads.g.doubleclick.net/tag/js/gpt.js$script,domain=aternos.org
 
 ! https://github.com/uBlockOrigin/uAssets/issues/11152
@@ -150,16 +149,13 @@ spiegel.de##+js(rpnt, script, /^\(function\(\)/, if(false))
 !#endif
 
 ! https://github.com/uBlockOrigin/uBlock-discussions/discussions/765
-! /^\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x74\x65\x6C\x73\x75\x2E\x66\x69\x2F\x74\x70\x6D\x6D/$1p,xhr
 telsu.fi##body > a[href][style], #prg > a[href][style], .footer > a[href][style], .rpos a[href][style], #pb_dets > a[href][style]
 telsu.fi##body > a[class][href], #prg > a[class][href], .footer > a[class][href], .rpos a[class][href], #pb_dets > a[class][href]
 telsu.fi##a[href^="/elk?"]:upward(div[class])
 telsu.fi##a[href^="/"]:matches-css(font-size: /^[2-9][\d][\.\d]*px$/):upward(div[class])
-! telsu.fi##a[href^="/"]:matches-css(font-size: /^[1][5-9][\.\d]*px$/):not(:matches-css(background-color: rgb(1, 115, 136))):upward(div[class])
 telsu.fi##+js(nostif, google)
 @@||securepubads.g.doubleclick.net/pagead/managed/js/gpt/*/pubads_impl.js$script,domain=telsu.fi
 telsu.fi#@##pb_top
-telsu.fi###pb_top, #fake:style(position: absolute !important; left: -4000px !important;)
 telsu.fi##+js(aost, $, /(?=.*_)/)
 
 ! https://github.com/uBlockOrigin/uAssets/issues/17125
@@ -190,13 +186,6 @@ djxmaza.in,thecubexguide.com##+js(no-xhr-if, /a-mo\.net|adnxs\.com|prebid|creati
 @@||securepubads.g.doubleclick.net/pagead/managed/js/gpt/*/pubads_impl$script,domain=djxmaza.in|thecubexguide.com
 @@||securepubads.g.doubleclick.net/pagead/ppub_config?ippd=$xhr,domain=djxmaza.in|thecubexguide.com
 
-! https://github.com/uBlockOrigin/uAssets/issues/17652
-*$xhr,3p,denyallow=github.com|stripe.com|fpjs.pro,domain=fingerprint.com|~dev.fingerprint.com
-||fingerprint.com^$strict3p,domain=fingerprint.com|~dev.fingerprint.com|~dashboard.fingerprint.com
-||dashboard.fingerprint.com^$strict3p,xhr,domain=dashboard.fingerprint.com
-/fingerprint\.com/[a-zA-Z0-9]{7}$/$xhr,1p,domain=dashboard.fingerprint.com
-fingerprint.com,~dev.fingerprint.com##+js(no-xhr-if, method:POST)
-
 ! https://github.com/uBlockOrigin/uAssets/issues/18036
 @@||securepubads.g.doubleclick.net/pagead/managed/js/gpt/$script,domain=dropgalaxy.com
 @@||imasdk.googleapis.com/js/sdkloader/ima3.js$script,domain=dropgalaxy.com
@@ -223,15 +212,6 @@ soft98.ir##+js(spoof-css, a[href*="s0ft98.ir"]\, article > aside\, a[href*="smos
 soft98.ir##a[href*="s0ft98.ir" i], article > aside, a[href*="smostafa" i]:style(clip-path: circle(0) !important;)
 !#endif
 
-! https://github.com/easylist/easylist/pull/16135
-@@||imasdk.googleapis.com/js/sdkloader/ima3_dai.js$domain=tv.rakuten.co.jp
-
-! https://github.com/uBlockOrigin/uAssets/issues/18336
-/webTracking.$domain=~webtracking.girard-agediss.com,badfilter
-/webtracking.min.js
-||qualzz.com/assets/trackingScript/webtracking.js
-||webtracking.fe.union-investment.de^
-
 ! https://github.com/uBlockOrigin/uAssets/discussions/17361#discussioncomment-5741055
 ||googletagmanager.com/gtm.js$important,badfilter
 
@@ -244,6 +224,7 @@ soft98.ir##a[href*="s0ft98.ir" i], article > aside, a[href*="smostafa" i]:style(
 
 ! https://github.com/uBlockOrigin/uAssets/issues/18399
 ||dl-protect.net^$badfilter
+||dl-protect.net^$3p
 
 ! https://github.com/uBlockOrigin/uAssets/issues/18260
 @@||cdn.snigelweb.com/adengine/falixnodes.net/loader.js$script,xhr,domain=client.falixnodes.net|dev-panel.falixnodes.net
@@ -252,4 +233,8 @@ soft98.ir##a[href*="s0ft98.ir" i], article > aside, a[href*="smostafa" i]:style(
 @@||static.ads-twitter.com^$xhr,domain=mqrio.dev
 ||analytics.twitter.com^$image,redirect-rule=1x1.gif
 @@*$script,domain=client.falixnodes.net
-client.falixnodes.net##+js(aost, Math, /(?=^(?!.*(cloudflare|antifraud|facebook)))/)
+||adservice.google.com^$script,domain=client.falixnodes.net,important
+||securepubads.g.doubleclick.net^$script,domain=client.falixnodes.net,important
+!client.falixnodes.net##+js(aost, Math, /(?=^(?!.*(cloudflare|antifraud|facebook)))/)
+@@*$image,domain=client.falixnodes.net
+client.falixnodes.net##[id^="adngin"]
