@@ -35,6 +35,7 @@
 ! ||download.cnet.com^$doc
 
 ! https://github.com/uBlockOrigin/uAssets/issues/79
+||facebook.com^
 ||flexytalk.net^
 ||quickdomainfwd.com^
 
