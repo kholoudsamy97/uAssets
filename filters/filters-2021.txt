@@ -1,6 +1,6 @@
 ! Title: uBlock₀ filters
 ! Description: Filters optimized for uBlock, to be used along EasyList
-! Last modified: Thu, 08 Jun 2023 03:38:53 +0000
+! Last modified: Sun, 11 Jun 2023 09:16:55 +0000
 ! Homepage: https://github.com/uBlockOrigin/uAssets
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! New filters from January 2021 to ->
@@ -227,7 +227,6 @@ thecartoonporntube.com##[href="/go/tube.php"]
 thecartoonporntube.com###advertising [href]
 vidsvidsvids.com##.zone
 womennaked.net##.hrcht6
-xtubetop.com##.video-block-happy:upward(1)
 camsexbabe.nl##.happy-player-beside
 camsexbabe.nl##.happy-section
 pt.potwm.com##.pausedView
@@ -970,9 +969,6 @@ ytanime.tv##+js(acs, document.querySelectorAll, popMagic)
 ytanime.tv##+js(aopr, u_cfg)
 ytanime.tv##+js(aopw, adcashMacros)
 *$script,3p,denyallow=arc.io|bootstrapcdn.com|chatango.com|cloudflare.com|cloudflare.net|disqus.com|disquscdn.com|facebook.net|fastly.net|fastlylb.net|fbcdn.net|google.com|googleapis.com|gstatic.com|hwcdn.net|jquery.com|jsdelivr.net|jwplatform.com|jwpcdn.com|recaptcha.net,domain=ytanime.tv
-
-! https://github.com/AdguardTeam/AdguardFilters/issues/74243
-momxxxfun.com##.video-block-happy:upward(1)
 
 ! guardaserie. name popunder
 ||googletagmanager.com/gtag/js^$redirect-rule=google-analytics_analytics.js,domain=guardaserie.*
@@ -4344,12 +4340,6 @@ wallpapers.ispazio.net##.box-apples_single_reclame
 ispazio.net##.stream-item
 ispazio.net##.stream-item-widget
 
-! https://github.com/uBlockOrigin/uAssets/issues/9967
-! https://github.com/uBlockOrigin/uAssets/issues/15496
-! https://github.com/uBlockOrigin/uAssets/issues/16708
-shineads.in##+js(nostif, ai_adb)
-shineads.in##+js(aeld, DOMContentLoaded, popup)
-
 ! https://github.com/uBlockOrigin/uAssets/issues/9962
 /nb/f_ls.js
 ! https://github.com/uBlockOrigin/uAssets/issues/9964
@@ -5363,10 +5353,11 @@ thetruedefender.com##.adsbyvli
 thetruedefender.com###text-4
 
 ! https://github.com/uBlockOrigin/uAssets/issues/10410
-asiaon.*,pornpaw.com##+js(acs, document.querySelectorAll, popMagic)
+asiaon.*,asiaontop.com,pornpaw.com##+js(acs, document.querySelectorAll, popMagic)
 ! https://github.com/AdguardTeam/AdguardFilters/issues/104768
 asiaon.*##+js(no-xhr-if, googlesyndication)
-||cse.google.com/adsense/search/async-ads.js$xhr,redirect-rule=noop.txt,domain=asiaon.top
+*$xhr,3p,method=head,redirect-rule=nooptext,domain=asiaon.*|asiaontop.com
+/aot-content/assets/*/cb-ads/*$domain=asiaon.top|asiaontop.com
 
 ! https://www.reddit.com/r/uBlockOrigin/comments/qnzkph/adblock_blocker/
 m4news.com##.demand-supply

@@ -4,7 +4,7 @@
 !   which purpose is to guarantee that a filter won't be overriden by
 !   exception filters.
 ! Expires: 7 days
-! Last modified: Thu, 08 Jun 2023 03:38:53 +0000
+! Last modified: Sun, 11 Jun 2023 09:16:55 +0000
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! Homepage: https://github.com/uBlockOrigin/uAssets
 !
@@ -282,10 +282,7 @@ zhihu.com##+js(no-xhr-if, log-sdk.ksapisrv.com/rest/wd/common/log/collect method
 ! redirector
 ||cj.dotomi.com^
 ||contentads.click^
-||dpbolvw.net^
-||frdjs-2.co^
 ||new-twinks.com^
-||octopuspop.com^
 ||pingleflavor.xyz^
 ||suptrkdisplay.com^
 ||terperbelomo.info^
@@ -313,12 +310,10 @@ zhihu.com##+js(no-xhr-if, log-sdk.ksapisrv.com/rest/wd/common/log/collect method
 ! narrative.com sites
 ||narrativ.com^$domain=androidauthority.com
 ! onesignal-sites
-||onesignal.com^$domain=androidauthority.com|iphoneincanada.ca|senpa.io
+||onesignal.com^$domain=androidauthority.com|iphoneincanada.ca|senpa.io|shineads.*
 ! geoip.cdn.arkadiumhosted.com
 ||geoip.cdn.arkadiumhosted.com^$domain=bestforpuzzles.com|charlotteobserver.com|independent.co.uk|standard.co.uk
-!#if ext_devbuild
 mozilla.org##+js(href-sanitizer, a[href^="https://app.adjust.com/"][href*="?redirect="], ?redirect)
-!#endif
 ! sites with beacons
 *$ping,domain=webnovel.com
 *$xhr,3p,denyallow=github.com|stripe.com|fpjs.pro,domain=fingerprint.com|~dev.fingerprint.com
@@ -331,6 +326,10 @@ androidauthority.com##+js(href-sanitizer, a[href^="https://androidauth.wpengine.
 ||lightboxcdn.com^$domain=androidauthority.com
 ||lightboxcdn.com/*/digibox.gif?
 ||lightboxcdn.com/*/jsonp/z?
+! firebase
+/firebase-$domain=zefoy.com
+pcgamingwiki.com##+js(href-sanitizer, a[href^="https://www.dpbolvw.net/click-"][href*="?url="], ?url)
+pcgamingwiki.com##+js(href-sanitizer, a[href^="https://greenmangaming.sjv.io/c/"][href*="?u="], ?u)
 ! Merge in resource-abuse.txt
 ! *** uAssets:filters/resource-abuse.txt ***
 ! Title: uBlock₀ filters – Resource abuse
