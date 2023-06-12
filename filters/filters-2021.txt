@@ -1,6 +1,6 @@
 ! Title: uBlock₀ filters
 ! Description: Filters optimized for uBlock, to be used along EasyList
-! Last modified: Sun, 11 Jun 2023 09:16:55 +0000
+! Last modified: Mon, 12 Jun 2023 08:01:53 +0000
 ! Homepage: https://github.com/uBlockOrigin/uAssets
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! New filters from January 2021 to ->
@@ -3140,9 +3140,9 @@ unblockweb.me##+js(aopw, _pop)
 @@||codingnepalweb.com^$ghide
 codingnepalweb.com##.adsbygoogle
 codingnepalweb.com##+js(no-fetch-if, googlesyndication)
+codingnepalweb.com##+js(rpnt, script, return showAdblockPopup)
 !#if ext_devbuild
 ||googlesyndication.com^$domain=codingnepalweb.com,important
-codingnepalweb.com##+js(rpnt, script, return showAdblockPopup)
 !#endif
 
 ! https://github.com/AdguardTeam/AdguardFilters/issues/85708
@@ -6334,6 +6334,8 @@ chortle.co.uk,coloring.ws,dltk-holidays.com,dltk-kids.com,kidzone.ws,pcsteps.com
 ||realsrv.com/popunder1000.js$xhr,3p,redirect=noop.txt
 ||exdynsrv.com/video-slider.js$xhr,3p,redirect=noop.txt
 mymusicreviews.com,thechat.cafe##+js(aopr, chp_adblock_browser)
+! https://www.nj.com/ .ad-unit
+nj.com##.ad-unit[id]
 
 ! https://github.com/uBlockOrigin/uAssets/issues/10964
 globfone.com##+js(no-xhr-if, ads)

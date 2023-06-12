@@ -1,6 +1,6 @@
 [Adblock Plus 2.0]
 ! Title: EasyList – Newsletter Notices
-! Last modified: Sun, 11 Jun 2023 09:16:55 +0000
+! Last modified: Mon, 12 Jun 2023 08:01:53 +0000
 ! Expires: 7 days (update frequency)
 
 ! *** easylist:template_header.txt ***
@@ -2754,7 +2754,7 @@ freethink.com##.f-block--form-text
 zmescience.com##.fb-inst
 herwholesomekitchen.com##.fd-focus-visible-applied
 cookienameddesire.com##.fd-form-popup
-bestbeefrecipes.com,herwholesomekitchen.com##.fd-modal
+barefootuniverse.com,bestbeefrecipes.com,herwholesomekitchen.com##.fd-modal
 damndelicious.net##.featured-subscribe
 treehugger.com##.featured-taxonomy-section__newsletter-signup
 mybroadband.co.za##.feed-newsletter
