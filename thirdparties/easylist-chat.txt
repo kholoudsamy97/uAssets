@@ -1,6 +1,6 @@
 [Adblock Plus 2.0]
 ! Title: EasyList – Chat Widgets
-! Last modified: Sun, 11 Jun 2023 09:16:55 +0000
+! Last modified: Tue, 18 Jul 2023 04:55:19 +0000
 
 ! *** easylist:template_header.txt ***
 !
@@ -57,6 +57,7 @@
 ||cliengo.com^$third-party
 ||cloudfront.net/gosquared.js
 ||connect.facebook.net^*/xfbml.customerchat.js
+||contivio.com/Chat2/
 ||craft-talk.com^$third-party
 ||crisp.chat^$third-party
 ||daktela.com^$third-party
@@ -69,6 +70,7 @@
 ||gladly.com/chat-sdk/
 ||goftino.com^$third-party
 ||googleapis.com/ebbot-web/
+||gorgias.chat^$third-party
 ||gs-chat.com^$third-party
 ||gso.amocrm.com^$third-party
 ||gubagoo.io^$third-party
@@ -78,7 +80,7 @@
 ||inteliwise.com^$third-party
 ||intercomcdn.com^$third-party
 ||jivosite.com^$third-party
-||js.zohocdn.com^$third-party
+||js.zohocdn.com^$third-party,domain=~zoho.com|~zoho.eu
 ||ladesk.com/chat/
 ||landbot.io^$third-party
 ||leadback.ru^$third-party
@@ -124,6 +126,7 @@
 ||stadtwerk.bot^$third-party
 ||storage.googleapis.com/code.snapengage.com/
 ||supportai.yandex/widget/$third-party
+||talkative-cdn.com^$third-party
 ||tawk.to^$third-party
 ||thelivechatsoftware.com^$third-party
 ||tidio.co^$third-party
