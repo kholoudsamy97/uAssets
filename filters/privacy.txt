@@ -1,30 +1,15 @@
-! Title: uBlock₀ filters – Privacy
+! Title: uBlock filters – Privacy
+! Last modified: Mon, 11 Dec 2023 11:14:05 +0000
+! Expires: 7 days
 ! Description: |
 !   Some of these filters make use of the `important` filter option,
 !   which purpose is to guarantee that a filter won't be overriden by
 !   exception filters.
-! Expires: 7 days
-! Last modified: Mon, 25 Sep 2023 08:56:38 +0000
 ! License: https://github.com/uBlockOrigin/uAssets/blob/master/LICENSE
 ! Homepage: https://github.com/uBlockOrigin/uAssets
 !
 ! GitHub issues: https://github.com/uBlockOrigin/uAssets/issues
 ! GitHub pull requests: https://github.com/uBlockOrigin/uAssets/pulls
-!
-! I will use data from benchmarks to decide what to add here.
-! https://github.com/gorhill/uBlock/wiki/uBlock-and-others%3A-Blocking-ads%2C-trackers%2C-malwares
-
-! I think web sites can live without this
-! Commented out on 2014-10-03: I don't see it anymore in benchmarks. Will see.
-! Commenting it out allows me to enable this one out-of-the-box.
-! ||linkedin.com^$3p,important
-
-! https://github.com/chrisaljoudi/uBlock/issues/289
-! Commented out, breaks to many sites. See:
-!   https://hg.adblockplus.org/easylist/rev/9f6e928c258a#l2.12
-!   Users can still block this one through hpHosts, MVPS, Dan Pollock's or
-!   manually through custom filters, or 3rd-party scripts
-! ||www.googletagservices.com/tag/js/gpt.js
 
 ! https://adblockplus.org/forum/viewtopic.php?f=2&t=38703
 ! 1st-party "recommendations" should never depends on a 3rd-party doing the job:
@@ -69,7 +54,7 @@
 ! https://github.com/uBlockOrigin/uAssets/issues/6319
 ! https://github.com/gorhill/uBlock/issues/1384
 ! https://github.com/uBlockOrigin/uAssets/issues/11003
-||addthis.com/*/addthis_widget.js$script,redirect=addthis.com/addthis_widget.js
+||addthis.com/*/addthis_widget.js$script
 ##.addthis_toolbox
 
 ! Examples of what is fixed by even an unfilled dummy API:
@@ -108,7 +93,8 @@ www.reddit.com##+js(json-prune, data.*.elements.edges.[].node.outboundLink)
 www.reddit.com##+js(json-prune, data.children.[].data.outbound_link)
 ||redditstatic.com/shreddit/sentry-$domain=reddit.com
 reddit.com##+js(aopw, STICKY_CANARY)
-reddit.com##+js(no-fetch-if, url:/svc/shreddit method:POST)
+! reddit.com##+js(aost, fetch, Ee/</<)
+reddit.com##reddit-breadcrumbs
 ||www.reddit.com/|$xhr,1p,method=post
 
 ! https://github.com/uBlockOrigin/uAssets/pull/5578
@@ -141,7 +127,7 @@ brillen.de##+js(acs, document.createElement, 'script')
 /googleanalytics.js$3p
 ! https://github.com/uBlockOrigin/uAssets/issues/11262
 -google-analytics/$domain=~wordpress.org,badfilter
--google-analytics/$3p,domain=~wordpress.org
+-google-analytics/$3p,domain=~wordpress.org|~brookson.co.uk
 
 ! https://github.com/uBlockOrigin/uAssets/pull/4961
 ||the-japan-news.com/modules/js/lib/fgp/fingerprint2.js$script,redirect=fingerprint2.js,important
@@ -232,25 +218,22 @@ search.brave.com##+js(no-fetch-if, body:browser)
 ||civicscience.com^$3p
 
 ! https://github.com/uBlockOrigin/uAssets/issues/9932
+/\/[a-z0-9]{12}\/[a-zA-Z0-9\/\+\-]{97,106}$/$match-case,script,1p,strict1p
+/^https?:\/\/[0-9a-z]{11,13}\.[^\/]*\/[a-zA-Z0-9\/\+\-]{90,106}$/$match-case,script,1p,strict3p
 /dataunlocker$script,1p,domain=~dataunlocker.com
-/[a-z0-9]{12}(\.admin)?\.dataunlocker\.com\//$script,1p,domain=dataunlocker.com
-/^\w+://[\w.\-]+\.www\.cybernetman\.com//$1p,script
-/^\w+://[\w.\-]+\.www\.logology\.co//$1p,script
-/^\w+://[\w.\-]+\.www\.atlaslane\.com//$1p,script
-/^\w+://[0-9a-z]{12}\.adria\.gg//$1p,script
-/^\w+://[0-9a-z]{11}\.taxliencode\.com//$1p,script
-/^\w+://[0-9a-z]{12}\.www\.sidsplumbing\.ie//$1p,script
-/^\w+://[0-9a-z]{12}\.www\.kodalia\.com//$1p,script
-fjlaboratories.com,stoic.ai##+js(aost, Math.floor, injectedScript)
-stoic.ai##^script:has-text(\x3c)
+/www\.eldorado\.gg\/[a-zA-Z0-9]{10,13}\.js/$1p,script,domain=eldorado.gg
 ||ampl.cinotes.com^
 ||data-saver-cindi.herokuapp.com^
 ||cdn.cindicator.com/$script,3p
-botcomics.com,cefirates.com,chandlerorchards.com,comicleaks.com,filmustage.com,freecodecamp.org,mailfloss.com,marketdata.app,monumentmetals.com,nookgaming.com,ping.gg,tapmyback.com,revistaferramental.com.br,hawpar.com,accuretawealth.com,resourceya.com,camberlion.com,adaptive.marketing,datree.io,alpacafinance.org,enkeleksamen.no,adria.gg,kvest.ee,controlconceptsusa.com,tt.live,creatordrop.com,groove.so,cainthus.com,jaywilsonwebsolutions.com,tracktheta.com,panpots.com##+js(acs, String.fromCharCode, join)
-botcomics.com,cefirates.com,chandlerorchards.com,comicleaks.com,marketdata.app,monumentmetals.com,tapmyback.com,ping.gg,revistaferramental.com.br,hawpar.com,alpacafinance.org,nookgaming.com,enkeleksamen.no,kvest.ee,controlconceptsusa.com,creatordrop.com,panpots.com##^script:has-text(join(''))
-alpacafinance.org,tt.live##^script:has-text(join(""))
-botcomics.com,cefirates.com,chandlerorchards.com,comicleaks.com,marketdata.app,monumentmetals.com,tapmyback.com,ping.gg,revistaferramental.com.br,hawpar.com,alpacafinance.org,nookgaming.com,enkeleksamen.no,kvest.ee,controlconceptsusa.com,creatordrop.com,panpots.com##^script:has-text("join('')")
-alpacafinance.org,tt.live##^script:has-text('join("")')
+!#if cap_html_filtering
+botcomics.com,cefirates.com,chandlerorchards.com,comicleaks.com,marketdata.app,monumentmetals.com,tapmyback.com,ping.gg,revistaferramental.com.br,hawpar.com,alpacafinance.org,nookgaming.com,enkeleksamen.no,kvest.ee,creatordrop.com,panpots.com,cybernetman.com,bitdomain.biz,gerardbosch.xyz,fort-shop.kiev.ua,accuretawealth.com,resourceya.com,tracktheta.com,adaptive.marketing##^script:has-text("join('')")
+alpacafinance.org,tt.live,future-fortune.com,abhijith.page,furucombo.app,madrigalmaps.com,adventuretix.com##^script:has-text('join("")')
+panprices.com,intercity.technology,freelancer.taxmachine.be,kodalia.com,adria.gg,fjlaboratories.com##^script:has-text(api.dataunlocker.com)
+!#else
+botcomics.com,cefirates.com,chandlerorchards.com,comicleaks.com,marketdata.app,monumentmetals.com,tapmyback.com,ping.gg,revistaferramental.com.br,hawpar.com,alpacafinance.org,nookgaming.com,enkeleksamen.no,kvest.ee,creatordrop.com,panpots.com,cybernetman.com,bitdomain.biz,gerardbosch.xyz,fort-shop.kiev.ua,accuretawealth.com,resourceya.com,tracktheta.com##+js(rmnt, script, /join\(\'\'\)/)
+alpacafinance.org,tt.live,future-fortune.com,abhijith.page,madrigalmaps.com,adventuretix.com##+js(rmnt, script, /join\(\"\"\)/)
+panprices.com,intercity.technology,freelancer.taxmachine.be,adria.gg,fjlaboratories.com##+js(rmnt, script, api.dataunlocker.com)
+!#endif
 
 ! https://www.reddit.com/r/uBlockOrigin/comments/opoba7/washington_post_showing_ad_placeholders/
 ||washpost.nile.works^
@@ -258,14 +241,18 @@ alpacafinance.org,tt.live##^script:has-text('join("")')
 ! https://github.com/easylist/easylist/commit/6457d9a221b19bf6d011d314d0bf14476d18f428#commitcomment-54257940
 /p13n/batch/action/*$image
 
+! Ad-Shield
 ! https://github.com/uBlockOrigin/uAssets/issues/9717
-||da29e6b8-f018-490f-b25f-39a887fc95e7.xyz^
-||31830fbc-adbf-11ed-afa1-0242ac120002.site^$xhr,ping
-||15823f12-289e-4189-9e51-e2de1bf1a105.online^$xhr,ping
-/^https:\/\/cdn\.jsdelivr\.net\/npm\/[-a-z_]{4,22}@latest\/dist\/script\.min\.js$/$script,3p,match-case
-
-! https://www.reddit.com/r/uBlockOrigin/comments/p29y3w/these_guys_boast_combatting_all_adblocks/
-||connectier.io^
+loawa.com,ygosu.com,sportalkorea.com,algumon.com,hancinema.net,enetnews.co.kr,edaily.co.kr,economist.co.kr,etoday.co.kr,hankyung.com,isplus.com,hometownstation.com,kagit.kr,inven.co.kr,viva100.com,joongdo.co.kr,jjang0u.com,tenbizt.com,tvreport.co.kr,newautopost.co.kr,mememedia.co.kr,mobilitytv.co.kr,cboard.net,a-ha.io,interfootball.co.kr,fourfourtwo.co.kr,apkmirror.com,dotkeypress.kr,viewcash.co.kr,tripplus.co.kr,enterdiary.com,mtodayauto.com,genshinlab.com,hotplacehunter.co.kr,mystylezip.com,majorgeeks.com,poro.gg,maple.gg,lolchess.gg,dak.gg,newdaily.co.kr,meconomynews.com,brandbrief.co.kr,dfast.kr,thephoblographer.com,newdaily.co.kr,dogdrip.net,youtu.co,honkailab.com,warcraftrumbledeck.com,golf-live.at,mlbpark.donga.com,gamingdeputy.com,thestockmarketwatch.com,capress.kr,carandmore.co.kr,maxmovie.kr,motorgraph.com,newsbell.co.kr,tminews.co.kr,thehousemagazine.kr,hardreset.info,metabattle.com##+js(set-local-storage-item, adshield-analytics-uuid, $remove$)
+loawa.com,ygosu.com,sportalkorea.com,algumon.com,hancinema.net,enetnews.co.kr,edaily.co.kr,economist.co.kr,etoday.co.kr,hankyung.com,isplus.com,hometownstation.com,kagit.kr,inven.co.kr,viva100.com,joongdo.co.kr,jjang0u.com,tenbizt.com,tvreport.co.kr,newautopost.co.kr,mememedia.co.kr,mobilitytv.co.kr,cboard.net,a-ha.io,interfootball.co.kr,fourfourtwo.co.kr,apkmirror.com,dotkeypress.kr,viewcash.co.kr,tripplus.co.kr,enterdiary.com,mtodayauto.com,genshinlab.com,hotplacehunter.co.kr,mystylezip.com,majorgeeks.com,poro.gg,maple.gg,lolchess.gg,dak.gg,newdaily.co.kr,meconomynews.com,brandbrief.co.kr,dfast.kr,thephoblographer.com,newdaily.co.kr,dogdrip.net,youtu.co,honkailab.com,warcraftrumbledeck.com,golf-live.at,mlbpark.donga.com,gamingdeputy.com,thestockmarketwatch.com,capress.kr,carandmore.co.kr,maxmovie.kr,motorgraph.com,newsbell.co.kr,tminews.co.kr,thehousemagazine.kr,hardreset.info,metabattle.com##+js(set-local-storage-item, as_profile_cache, $remove$)
+loawa.com,ygosu.com,sportalkorea.com,algumon.com,hancinema.net,enetnews.co.kr,edaily.co.kr,economist.co.kr,etoday.co.kr,hankyung.com,isplus.com,hometownstation.com,kagit.kr,inven.co.kr,viva100.com,joongdo.co.kr,jjang0u.com,tenbizt.com,tvreport.co.kr,newautopost.co.kr,mememedia.co.kr,mobilitytv.co.kr,cboard.net,a-ha.io,interfootball.co.kr,fourfourtwo.co.kr,apkmirror.com,dotkeypress.kr,viewcash.co.kr,tripplus.co.kr,enterdiary.com,mtodayauto.com,genshinlab.com,hotplacehunter.co.kr,mystylezip.com,majorgeeks.com,poro.gg,maple.gg,lolchess.gg,dak.gg,newdaily.co.kr,meconomynews.com,brandbrief.co.kr,dfast.kr,thephoblographer.com,newdaily.co.kr,dogdrip.net,youtu.co,honkailab.com,warcraftrumbledeck.com,golf-live.at,mlbpark.donga.com,gamingdeputy.com,thestockmarketwatch.com,capress.kr,carandmore.co.kr,maxmovie.kr,motorgraph.com,newsbell.co.kr,tminews.co.kr,thehousemagazine.kr,hardreset.info,metabattle.com##+js(set-local-storage-item, as_accetpable_ads_blocked_cache, $remove$)
+loawa.com,ygosu.com,sportalkorea.com,algumon.com,hancinema.net,enetnews.co.kr,edaily.co.kr,economist.co.kr,etoday.co.kr,hankyung.com,isplus.com,hometownstation.com,kagit.kr,inven.co.kr,viva100.com,joongdo.co.kr,jjang0u.com,tenbizt.com,tvreport.co.kr,newautopost.co.kr,mememedia.co.kr,mobilitytv.co.kr,cboard.net,a-ha.io,interfootball.co.kr,fourfourtwo.co.kr,apkmirror.com,dotkeypress.kr,viewcash.co.kr,tripplus.co.kr,enterdiary.com,mtodayauto.com,genshinlab.com,hotplacehunter.co.kr,mystylezip.com,majorgeeks.com,poro.gg,maple.gg,lolchess.gg,dak.gg,newdaily.co.kr,meconomynews.com,brandbrief.co.kr,dfast.kr,thephoblographer.com,newdaily.co.kr,dogdrip.net,youtu.co,honkailab.com,warcraftrumbledeck.com,golf-live.at,mlbpark.donga.com,gamingdeputy.com,thestockmarketwatch.com,capress.kr,carandmore.co.kr,maxmovie.kr,motorgraph.com,newsbell.co.kr,tminews.co.kr,thehousemagazine.kr,hardreset.info,metabattle.com##+js(set-local-storage-item, as_adblock_cache, $remove$)
+apkmirror.com,dotkeypress.kr,viewcash.co.kr,tripplus.co.kr,enterdiary.com,mtodayauto.com,hotplacehunter.co.kr,mystylezip.com,majorgeeks.com,poro.gg,maple.gg,lolchess.gg,dak.gg,meconomynews.com,brandbrief.co.kr,dfast.kr,youtu.co,mlbpark.donga.com,capress.kr,carandmore.co.kr,maxmovie.kr,motorgraph.com,newsbell.co.kr,tminews.co.kr,thehousemagazine.kr,hardreset.info,metabattle.com##+js(noeval-if, /07c225f3\.online|content-loader\.com|css-load\.com|html-load\.com/)
+!#if cap_html_filtering
+apkmirror.com,dotkeypress.kr,viewcash.co.kr,tripplus.co.kr,enterdiary.com,mtodayauto.com,hotplacehunter.co.kr,mystylezip.com,majorgeeks.com,poro.gg,maple.gg,lolchess.gg,dak.gg,meconomynews.com,brandbrief.co.kr,dfast.kr,youtu.co,mlbpark.donga.com,capress.kr,carandmore.co.kr,maxmovie.kr,motorgraph.com,newsbell.co.kr,tminews.co.kr,thehousemagazine.kr,hardreset.info,metabattle.com##^script:has-text(KCgpPT57bGV0IGU)
+!#else
+apkmirror.com,dotkeypress.kr,viewcash.co.kr,tripplus.co.kr,enterdiary.com,mtodayauto.com,hotplacehunter.co.kr,mystylezip.com,majorgeeks.com,poro.gg,maple.gg,lolchess.gg,dak.gg,meconomynews.com,brandbrief.co.kr,dfast.kr,youtu.co,mlbpark.donga.com,capress.kr,carandmore.co.kr,maxmovie.kr,motorgraph.com,newsbell.co.kr,tminews.co.kr,thehousemagazine.kr,hardreset.info,metabattle.com##+js(rmnt, script, KCgpPT57bGV0IGU)
+!#endif
 
 ! https://github.com/AdguardTeam/AdguardFilters/issues/91230
 ||nsfw.xxx/vendor/fingerprint/fingerprint2.min.js$script,redirect=fingerprint2.js,important
@@ -333,6 +320,7 @@ tacobell.com##+js(set, bmak.js_post, false)
 ! https://github.com/uBlockOrigin/uAssets/pull/15692#issuecomment-1321098072
 blog.skk.moe##+js(no-fetch-if, body:/[\w\W]{700}/)
 skk.moe##+js(no-fetch-if, method:/post|posT|poSt|poST|pOst|pOsT|pOSt|pOST|Post|PosT|PoSt|PoST|POst|POsT|POSt|POST/)
+blog.skk.moe##+js(no-fetch-if, /\/post\/.*\.json/)
 /cfga/jquery.js?$image
 /npm/sks@0.*/lazyload.js$script,3p
 
@@ -446,25 +434,6 @@ ericdraken.com##^script[async]
 ! https://github.com/uBlockOrigin/uAssets/issues/16478
 !||linkedin.com/li/track$xhr,1p
 
-! https://github.com/AdguardTeam/AdguardFilters/commit/c996d0d98c6bc4f4542c258a44485f8868a8c8c7
-/oo/*/lsync.js$1p
-/oo/*/l.js|$1p
-! https://github.com/AdguardTeam/AdguardFilters/commit/dd15e29e10b0ad6f21c0451fa84aa0a041dfe68e
-/oo/cl*.js?rd=$1p
-! https://github.com/AdguardTeam/AdguardFilters/commit/e0033467716a3f4077adecb574da73861f663e76
-/acc/acctag.js
-! https://github.com/AdguardTeam/AdguardFilters/commit/b4ad45459bcd5e0a0c6711abec10a45dc35a5062
-.jp/static/js/track.js
-! https://github.com/AdguardTeam/AdguardFilters/commit/3ee12854a9da5737259eb5b4cd9ce124d5260a8b
-/outLoging.js
-/outLoging2.js
-! https://github.com/AdguardTeam/AdguardFilters/commit/06b30e49b01ace6f36da016bf4d02ab2f4b15524
-||blozoo.info/js/ranktool/
-! https://github.com/AdguardTeam/AdguardFilters/commit/f9a82c08debe42b73950d4caf103aeafc8b12feb
-||odsyms15.com/impression?
-! https://github.com/AdguardTeam/AdguardFilters/commit/4cebf73b405ef76c4f32fee4d5229908245c45e0
-||rakuten.co.jp/com/js/omniture/
-
 ! https://github.com/uBlockOrigin/uAssets/issues/16730#issuecomment-1427957300
 utreon.com##+js(no-xhr-if, utreon.com/pl/api/event method:POST)
 
@@ -495,9 +464,6 @@ zhihu.com##+js(no-xhr-if, log-sdk.ksapisrv.com/rest/wd/common/log/collect method
 
 ! https://www.reddit.com/r/uBlockOrigin/comments/11rjv8n/
 ||kemono.party/js/script.js
-
-! https://github.com/uBlockOrigin/uAssets/issues/17204
-||subdl.net/statsLog
 
 ! AdSpyglass tracker
 /api/click/*?c=$image
@@ -530,7 +496,8 @@ zhihu.com##+js(no-xhr-if, log-sdk.ksapisrv.com/rest/wd/common/log/collect method
 ||adonsonlyd.xyz^
 
 ! https://github.com/uBlockOrigin/uAssets/issues/17786
-||adthrive.com^$removeparam,domain=~mediaite.com
+! https://github.com/uBlockOrigin/uAssets/issues/20569
+||adthrive.com^$removeparam,from=~mediaite.com|~a-z-animals.com
 
 ! branch.io sites
 ||cdn.branch.io/branch-latest.min.js$important,domain=nbc.com|pac-12.com
@@ -552,7 +519,7 @@ mindbodygreen.com##+js(set-local-storage-item, segmentDeviceId, $remove$)
 ||pl.kukaj.to/kukac.js
 
 ! geoip.cdn.arkadiumhosted.com
-||geoip.cdn.arkadiumhosted.com^$domain=bestforpuzzles.com|charlotteobserver.com|independent.co.uk|miamiherald.com|standard.co.uk|word.tips
+||geoip.cdn.arkadiumhosted.com^$domain=bestforpuzzles.com|charlotteobserver.com|dailygazette.com|independent.co.uk|miamiherald.com|standard.co.uk|word.tips
 
 ! sites with beacons
 *$ping,domain=webnovel.com
@@ -652,8 +619,11 @@ starstyle.com##+js(href-sanitizer, a[href^="https://go.skimresources.com/"][href
 insidehook.com##+js(href-sanitizer, a[href^="https://click.linksynergy.com/deeplink?id="][href*="&murl="], ?murl)
 insidehook.com##+js(href-sanitizer, a[href*="?"][href*="&url=http], ?url)
 insidehook.com##+js(href-sanitizer, a[href*="?"][href*="&u=http"], ?u)
-! [NSFW] https://fap18.net/video/88120176/danny-d-2-milfs-and-that-big-cock?c=milf & https://fap18.net/xid/45560506/
-fap18.net##+js(href-sanitizer, a[href^="/vp/player/to/?u=http"]\, a[href^="/vp/download/goto/?u=http"], ?u)
+! [NSFW] https://fap18.net/video/88120176/danny-d-2-milfs-and-that-big-cock?c=milf & https://fap18.net/xid/45560506/ and similar
+fap18.net,xxxmom.net,fuck55.net,gofucker.com,sexu.tv,vid123.net,babe8.net,beeg.porn##+js(href-sanitizer, a[href^="/vp/player/to/?u=http"]\, a[href^="/vp/download/goto/?u=http"], ?u)
+! [NSFW] https://losporn.org/black-beautys-10-watch-online-free and similar
+! https://github.com/uBlockOrigin/uAssets/issues/20330
+losporn.org,streamporn.li,pandamovies.org,bananamovies.org,xopenload.net,adultdvdparadise.com,speedporn.net,mangoporn.net,pandamovie.info,mangoporn.co,mangoparody.com,xxxscenes.net,pornkino.cc,watchxxxfree.pw,pandamovie.in,speedporn.pw,watchfreexxx.net,youwatchporn.com,watchpornfree.info,pandamovies.me,xtapes.me,netflixporno.net,pornwish.org,freeomovie.info,fullxxxmovies.me,watchpornx.com,xxxparodyhd.net,xxxstream.me,pornwatch.ws,xopenload.pw,onstreams.net,playpornfree.xyz,pandamovies.pw,streamporn.pw,xopenload.me##+js(href-sanitizer, a[href^="https://drivevideo.xyz/link?link=http"], ?link)
 ! https://nowinstock.net/computers/videocards/nvidia/rtx4090/
 nowinstock.net##+js(href-sanitizer, a[href^="https://click.linksynergy.com/deeplink?id="][href*="&murl="], ?murl)
 nowinstock.net##+js(href-sanitizer, a[href^="http://go.redirectingat.com"][href*="&url="], ?url)
@@ -667,7 +637,19 @@ tube188.com##+js(href-sanitizer, a[href^="/check.php?"][href*="&url=http"], ?url
 ! https://tomshardware.com/news/windows-11-gaming-benchmarks-performance-vbs-hvci-security
 tomshardware.com##+js(href-sanitizer, a[href^="https://click.linksynergy.com/deeplink?id="][href*="&murl=http"], ?murl)
 ! http://disq.us/p/2vt2qs2
+! https://github.com/uBlockOrigin/uAssets/issues/20066
 disqus.com##+js(href-sanitizer, a[href^="https://disq.us/url?url="][title^="http"], [title])
+disqus.com##+js(href-sanitizer, a[href^="https://disq.us/?url=http"], ?url)
+disqus.com##a[href][data-link-out]:remove-attr(data-link-out)
+! https://steamcommunity.com/games/221410/announcements/detail/1602634609636894200
+steamcommunity.com##+js(href-sanitizer, a[href^="https://steamcommunity.com/linkfilter/?url=http"], ?url)
+! https://colab.research.google.com/ - Needs sign-in
+colab.research.google.com##+js(href-sanitizer, a[href^="https://colab.research.google.com/corgiredirector?site=http"], ?site)
+! https://www.xda-developers.com/lenovo-yoga-7i-500-deal/
+xda-developers.com##+js(href-sanitizer, a[href^="https://shop-links.co/link/?"][href*="&url=http"], ?url)
+! https://www.reddit.com/r/uBlockOrigin/comments/17psek6/what_exactly_is_jdoqocycom_and_why_does_every/
+isthereanydeal.com##+js(href-sanitizer, a[href^="http://www.jdoqocy.com/click-"][href*="?URL=http"], ?URL)
+isthereanydeal.com##+js(href-sanitizer, a[href^="https://track.adtraction.com/t/t?"][href*="&url=http"], ?url)
 
 ! https://chataigpt.org
 /detroitchicago/dpv.gif?$image
@@ -691,7 +673,8 @@ factable.com##+js(cookie-remover, hive_geoloc)
 ! https://github.com/uBlockOrigin/uAssets/issues/17149#issuecomment-1651198474
 watchporn.to##+js(cookie-remover, kt_ips)
 ! https://www.bing.com/
-bing.com##+js(cookie-remover, MicrosoftApplicationsTelemetryDeviceId)
+! https://www.msn.com/en-us/money/markets/elon-musk-s-outlook-on-our-future-turns-dour/ar-AA1iZxwn
+bing.com,msn.com##+js(cookie-remover, MicrosoftApplicationsTelemetryDeviceId)
 ! https://capcom.fandom.com/wiki/Gallery:Bishamon
 fandom.com##+js(set-cookie, tracking_session_id, OK, , reload, 1)
 fandom.com##+js(set-cookie, Geo, OK)
@@ -792,6 +775,9 @@ $removeparam=mtm_source
 $removeparam=pk_campaign
 $removeparam=pk_medium
 $removeparam=pk_source
+! ActiveCampaign
+! https://github.com/brave/brave-browser/issues/26295
+$removeparam=vgo_ee
 ! Cxense clickthrough tracking
 $removeparam=cx_click
 $removeparam=cx_recsOrder
@@ -804,12 +790,26 @@ $removeparam=adjust_tracker_limit
 $removeparam=adjust_tracker
 $removeparam=adjust_adgroup
 $removeparam=adjust_campaign
+! impact.com
+$removeparam=ir_campaignid
+$removeparam=ir_adid
+$removeparam=irclickid
+$removeparam=ir_partnerid
 ! https://github.com/DandelionSprout/adfilt/discussions/163#discussioncomment-5867802
 $removeparam=asc_campaign,domain=aboutamazon.com|amazon.*|amzn.to
 $removeparam=asc_refurl,domain=aboutamazon.com|amazon.*|amzn.to
 $removeparam=asc_source,domain=aboutamazon.com|amazon.*|amzn.to
-! https://www.wsj.com/livecoverage/tropical-storm-idalia-hurricane-florida?mod=hp_lead_pos7
-||wsj.com^$removeparam=mod
+! youtube.com - Copy video URL at its search result via mouse right click.
+||youtube.com^$removeparam=pp
+! https://github.com/AdguardTeam/AdguardFilters/issues/159953
+||youtu.be^$removeparam=si
+! Embedded tweets
+$removeparam=refsrc,domain=twitter.com|x.com
+$removeparam=ref_src,domain=twitter.com|x.com
+$removeparam=ref_url,domain=twitter.com|x.com
+! Twitter
+$removeparam=cxt,domain=twitter.com|x.com
+$removeparam=s,domain=twitter.com|x.com
 ! https://github.com/uBlockOrigin/uAssets/issues/18938#issuecomment-1693238481
 ! https://community.brave.com/t/unable-to-open-reddit-com-urls-in-private-tabs/503125/4
 !#if env_firefox
@@ -828,6 +828,63 @@ natgeotv.com##+js(set, Visitor, {})
 
 ! https://github.com/easylist/easylist/issues/17135
 ||googletagmanager.com/gtag/js$domain=starblast.io,important
+
+! https://github.com/uBlockOrigin/uAssets/issues/19954
+||cdn.cuty.io/fps.js^$domain=tickzoo.tv
+
+! https://github.com/uBlockOrigin/uAssets/issues/19998
+||roshy.tv/wp-content/uploads/perfmatters/gtagv4.js
+
+! https://lenovo.com/us/en/legal/copytrade/?orgRef=[...] - Search Google for "Lenovo copyright", Click on the first result
+www.lenovo.com##+js(aost, history.replaceState, injectedScript)
+
+! https://developers.google.com/tag-platform/tag-manager/server-side/send-data
+! https://simoahava.com/analytics/server-side-tagging-google-tag-manager
+!*$1p,strict3p,script,header=via:1.1 google
+
+! PersianBlocker filters
+! web.bale.ai - Tracking (OS and browser)
+!#if !env_mobile
+web.bale.ai##+js(trusted-set, navigator.userAgent, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML\, like Gecko) Chrome/119.0.0.0 Safari/537.36)
+!#else
+web.bale.ai##+js(trusted-set, navigator.userAgent, Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML\, like Gecko) Chrome/119.0.6045.66 Mobile Safari/537.36)
+!#endif
+! https://www.halaldownload.com/%d8%af%d8%a7%d9%86%d9%84%d9%88%d8%af-%d9%82%d8%b3%d9%85%d8%aa-6-%d9%81%d8%b5%d9%84-2-%d8%b2%d8%ae%d9%85-%da%a9%d8%a7%d8%b1%db%8c-%d8%a8%d8%a7%d8%b2%da%af%d8%b4%d8%aa/ - Download links
+||upera.shop/ref/$doc,urltransform=/^\/ref\/[^\/]+//
+
+! https://www.makeuseof.com/best-vs-code-chatgpt-extensions/ - Tracking cookies
+androidpolice.com,makeuseof.com,movieweb.com,xda-developers.com##+js(cookie-remover, /articlesRead|previousPage/) 
+
+! https://github.com/uBlockOrigin/uAssets/issues/20440
+/^https?:\/\/chat\.openai\.com\/ces\/v1\/[a-z]$/$xhr,1p,domain=chat.openai.com,method=post
+
+! https://github.com/uBlockOrigin/uAssets/issues/20530
+airtel.in##+js(no-xhr-if, analytics/bulk-pixel)
+
+! https://elevenlabs.io/dubbing - Stores the last dubbing result
+elevenlabs.io##+js(set-local-storage-item, IIElevenLabsDubbingResult, $remove$)
+
+! Pepper redirection - pepper.ru/deals/post-428233 | pepper.pl/promocje/post-750379 | dealabs.com/bons-plans/post-2674687
+chollometro.com##+js(href-sanitizer, a[href*="https://www.chollometro.com/visit/"][title^="https://"], [title])
+dealabs.com##+js(href-sanitizer, a[href*="https://www.dealabs.com/visit/"][title^="https://"], [title])
+hotukdeals.com##+js(href-sanitizer, a[href*="https://www.hotukdeals.com/visit/"][title^="https://"], [title])
+mydealz.de##+js(href-sanitizer, a[href*="https://www.mydealz.de/visit/"][title^="https://"], [title])
+nl.pepper.com##+js(href-sanitizer, a[href*="https://nl.pepper.com/visit/"][title^="https://"], [title])
+pepper.it##+js(href-sanitizer, a[href*="https://www.pepper.it/visit/"][title^="https://"], [title])
+pepper.pl##+js(href-sanitizer, a[href*="https://www.pepper.pl/visit/"][title^="https://"], [title])
+pepper.ru##+js(href-sanitizer, a[href*="https://www.pepper.ru/visit/"][title^="https://"], [title])
+preisjaeger.at##+js(href-sanitizer, a[href*="https://www.preisjaeger.at/visit/"][title^="https://"], [title])
+promodescuentos.com##+js(href-sanitizer, a[href*="https://www.promodescuentos.com/visit/"][title^="https://"], [title])
+pelando.com.br##+js(href-sanitizer, a[href*="https://www.pelando.com.br/api/redirect?url="], ?url)
+! desidime.com##+js(href-sanitizer, a[href*="https://www.desidime.com/links?ref=][href*="&url="], &url)
+
+! https://www.aachener-zeitung.de/
+||r.aachener-zeitung.de^
+||prod-mhaa.mhtr.be^
+||mhtr.be/public/tr/tracker.min.js
+
+! https://github.com/uBlockOrigin/uAssets/issues/21342
+proboards.com##+js(rmnt, script, vglnk)
 
 ! Merge in resource-abuse.txt
 !#include resource-abuse.txt

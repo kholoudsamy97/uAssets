@@ -1,8 +1,8 @@
 ﻿[uBlock Origin]
 ! Title: Block Outsider Intrusion into LAN
-! Description: Prevents public internet sites from digging into your local LAN files.
+! Last modified: Mon, 11 Dec 2023 11:14:05 +0000
 ! Expires: 29 days
-! Last modified: Mon, 25 Sep 2023 08:56:38 +0000
+! Description: Prevents public internet sites from digging into your local LAN files.
 ! Requested here: https://github.com/uBlockOrigin/uAssets/issues/4318
 ! Revived for: https://github.com/uBlockOrigin/uBlock-issues/issues/1070
 ! Homepage: https://github.com/uBlockOrigin/uAssets
@@ -101,5 +101,8 @@
 !
 ! https://github.com/uBlockOrigin/uAssets/issues/19005
 @@||127.0.0.1^$xhr,domain=battlelog.battlefield.com
+!
+! https://github.com/uBlockOrigin/uAssets/pull/20768
+@@||127.0.0.1^$3p,domain=musicbrainz.org
 !
 ! ——— END

@@ -1,8 +1,7 @@
 [Adblock Plus 2.0]
 ! Title: EasyList – Notifications
-! Last modified: Mon, 25 Sep 2023 08:56:38 +0000
+! Last modified: Mon, 11 Dec 2023 11:14:05 +0000
 ! Expires: 7 days (update frequency)
-
 ! *** easylist:template_header.txt ***
 !
 ! Please report any unblocked adverts or problems
@@ -15,7 +14,6 @@
 ! GitHub pull requests: https://github.com/easylist/easylist/pulls
 !
 !--------------------------General blocking rules-----------------------------!
-
 ! *** easylist:fanboy-addon/fanboy_notifications_general_block.txt ***
 -fb-notification/
 -push-notification.$domain=~github.com
@@ -78,6 +76,7 @@
 /push-sw.
 /push-worker-$script
 /push-wrap.js
+/push.*/list_notificaciones.php
 /push/notification-
 /push/offer/*
 /push/sbscr.
@@ -113,7 +112,7 @@
 /pushy-ver.js
 /russmediapush/*
 /scripts/onesignal.
-/sendpulse/*
+/sendpulse/*$domain=~sendpulse.ua
 /sendsay_push_
 /site-notification-desk.
 /sna-pushwoosh.
@@ -147,7 +146,6 @@ _revotas_push.
 /mobile-welcome-overlay/*$script
 /smart-app-banner.js
 !------------------------General element hiding rules-------------------------!
-
 ! *** easylist:fanboy-addon/fanboy_notifications_general_hide.txt ***
 ###FCMpush-slidedown-container
 ###NotificationsAskMsg
@@ -171,6 +169,7 @@ _revotas_push.
 ###edrone--push--alert--box
 ###frizbit-prompter
 ###ggpush-main-area
+###grow-consent-modal
 ###hint-push-service
 ###ilabspush-optin-container
 ###jeapie-prompt-widget
@@ -259,6 +258,7 @@ _revotas_push.
 ##.hs-push
 ##.htpush-chrome-style-notification
 ##.i-push-notification
+##.id-StoryElement-embed--cleverPush
 ##.insider-opt-in-notification
 ##.item-newsletter-form
 ##.j-push-notifications-feature
@@ -411,7 +411,6 @@ _revotas_push.
 ! International
 ###uutiskirje-nosto
 !-------------------------Third-party blocking rules--------------------------!
-
 ! *** easylist:fanboy-addon/fanboy_notifications_thirdparty.txt ***
 ||api-push.com^$third-party
 ||bildirnet.com^$third-party
@@ -424,7 +423,9 @@ _revotas_push.
 ||confirmit.com^$third-party
 ||conforama-push.com^$third-party
 ||contentsitesrv.com/js/push/$third-party
+||css.xjsx.lol^$third-party
 ||digipush.io^$third-party
+||dpns-notifications.com^$third-party
 ||easyfeeed.com^$third-party
 ||evolok.net^$third-party
 ||farteniuson.com^$third-party
@@ -441,6 +442,7 @@ _revotas_push.
 ||ntvsw.com^$third-party
 ||partishion.com^$third-party
 ||pathlime.com^$third-party
+||popmechanic.ru^$third-party
 ||propush.net^$third-party
 ||puscomosca.com^$third-party
 ||push-centr.com^$third-party
@@ -503,6 +505,7 @@ _revotas_push.
 ||signaly.co^$third-party
 ||snrcdn.net^$third-party
 ||spacepush.ru^$third-party
+||staq-cdn.com/grow/$third-party
 ||system-notify.app^$third-party
 ||topswp.com^$third-party
 ||unative.com^$third-party
@@ -513,6 +516,7 @@ _revotas_push.
 ||webpushs.com^$third-party
 ||whitepush.biz^$third-party
 ||worldpush.co^$third-party
+||wps.relateddigital.com^$third-party
 ||wpush.biz^$third-party
 ||wpushsdk.com^$third-party
 ||xedo.me^$third-party
@@ -596,18 +600,18 @@ _revotas_push.
 ||app.adjust.net.in/smart_banner
 ||mobi24.net^$third-party
 
-
 ! *** easylist:fanboy-addon/fanboy_sounds_thirdparty.txt ***
-! 3rd-party sounds
 ||acquire.io/assets/sound/
 ||amazonaws.com/alive5cdn/$media
 ||apex.live/media/$media
 ||app.chaport.com/sounds/
 ||app.onlim.com/app/assets/audios/
 ||appspot.com/sounds/chatmsg.mp3
+||azureedge.neti^$media,domain=oct8ne.com
 ||bac-assets.com/chat/spa-assets/$media,domain=bankofamerica.com
 ||bac-assets.com/spa/widgets/www-chat/$media,domain=bankofamerica.com
 ||callback24.io/sounds/
+||carchat24.com/inpagechat/audio/$media
 ||carrotquest.app/sounds/
 ||cdn-widget.callpage.io/build/sounds/
 ||channel.io/plugin/$media
@@ -640,6 +644,7 @@ _revotas_push.
 ||livechatinc.com/widget/static/media/
 ||lpsnmedia.net/le_unified_window/$media
 ||me-talk.ru/support/sounds/
+||nice-incontact.com/inContact/ChatClient/$media
 ||phenompeople.com/txm-bot/prod/$media
 ||purechatcdn.com/Content/Audio/
 ||qualified.com/packs/$media
@@ -652,6 +657,7 @@ _revotas_push.
 ||snapengage.com/sounds/
 ||static.olark.com/jsclient/sounds/
 ||static.widget.trengo.eu/assets/$media
+||streamwood.ru/img/$media
 ||tars-file-upload.s3.amazonaws.com^$media
 ||tawk.to/*/audio/
 ||tidiochat.com^$media
@@ -664,8 +670,8 @@ _revotas_push.
 ||zdassets.com/web_widget/$media
 ||zohocdn.com/salesiq/*/sound/
 ||zopim.com/widget/sounds/
+||zyratalk.com/contractorschatbot/$media
 !--------------------------Specific blocking filters--------------------------!
-
 ! *** easylist:fanboy-addon/fanboy_notifications_specific_block.txt ***
 /firebase-messaging.js$script,domain=tribunnews.com
 ||9to5terminal.com/push.js
@@ -687,12 +693,16 @@ _revotas_push.
 ||indiatimes.com/pn/
 ||iol.co.za/sw.js
 ||kogan.com/sw.js
+||latestdeals.co.uk/sw.js
 ||ndtv.com/js/breaking_pushalert_revised.js
 ||ndtv.com/sw.js
+||newsukraine.rbc.ua/sworker.js
 ||notify.hindustantimes.com^
 ||push.cnnindonesia.com^
 ||renaultsport.com/spip.php?page=sw.js
 ||rottentomatoes.com/service-worker/sw.js
+||rt.com/homescreen-sw.js
+||scmp.com/sw.js
 ||seattletimes.com/wp-content/plugins/st-user-messaging/$script
 ||sportskeeda.com/js/production/web-notifications/
 ||techwalla.com/push-service-worker.js
@@ -715,9 +725,7 @@ _revotas_push.
 ||tio.ch/js/api.push.js
 ||tutto.tv/wp-content/plugins/plugin-notifiche-
 ! Mobile Notifications
-!
 !------------------------Specific element hiding rules------------------------!
-
 ! *** easylist:fanboy-addon/fanboy_notifications_specific_hide.txt ***
 tbsnews.net###___tbspushdiv
 redbull.com###bottom-notifications
@@ -728,10 +736,12 @@ tdtube.net###main-fixed
 iol.pt###popover
 livenation.co.nz###push-notifications-popup
 google.com###pushdown
+nrl.com###vue-prompt-toast
 alarabiya.net,indiatimes.com###wzrk_wrapper
 tenor.com##.LanguageBanner
 bing.com##.PopinAnimation
 airship.com##.PushNotification
+chaturbate.com##.RoomSignupPopup
 reddit.com##.XPromoBlockingModal
 reddit.com##.XPromoInFeed
 improvethenews.org##.__floater
@@ -743,6 +753,7 @@ smocca.jp##.c-box-app_banner
 cnet.com##.c-globalNotification
 techwalla.com##.component-push-notification
 manutd.com##.custom-popup
+advfn.com##.cw-prompt-alert
 mediaexpert.pl##.dynamic-modal
 msn.com##.homepage-banner
 yummly.com##.house-promo-root
@@ -763,7 +774,10 @@ waze.com##.wz-downloadbar
 reddit.com##.xPromoAppStoreFooter
 chrome.google.com##[role="banner"] > div[class][role="dialog"][aria-labelledby="promo-header"]
 !! International
+segre.com###body_modal_5bNRsFSmILUgICbhc8pp
+diarimes.com###body_modal_mLuzd6bcGWwnVCvfwvBU
 mundodeportivo.com###gg-alert
+toy-people.com###notification_alert_container
 hesport.com###notification_pp
 animefire.net###page-mask
 aerzteblatt.de###pushy
@@ -771,14 +785,16 @@ formulatv.com###resetUI
 animefire.net###sub_buttons
 animefire.net###sub_modal
 abendzeitung-muenchen.de###webpush-app
+muziker.at,muziker.be,muziker.bg,muziker.co.uk,muziker.com,muziker.cz,muziker.de,muziker.ee,muziker.es,muziker.fi,muziker.fr,muziker.gr,muziker.hr,muziker.hu,muziker.ie,muziker.it,muziker.lt,muziker.lu,muziker.lv,muziker.nl,muziker.nu,muziker.pl,muziker.pt,muziker.ro,muziker.se,muziker.si,muziker.sk###webpush-popup
 focus.de###wpBreakingNewsBanner
 rd.fi###zone-header-wrapper
-areena.yle.fi##.Cards__PauseRecommendationsBackground-sc-kzqq5f-22
+areena.yle.fi##.PauseRecommendations__PauseRecommendationsBackground-sc-1abti0d-0
 romait.it##.alert
 nu.nl##.breakingpush
 zillow.com##.cQZIoF
 kariyer.net##.download-app-wrapper
 actionnetwork.com##.follow-author__button
+dietplus.jp##.js-app-bg
 buyma.com##.js-app-download-url
 ziare.com##.modal-backdrop
 tuttoandroid.net,tuttotech.net##.modal-notifiche
@@ -787,6 +803,7 @@ aamuposti.fi,heinavedenlehti.fi,helsinginuutiset.fi,iisalmensanomat.fi,ita-savo.
 jornaldenegocios.pt##.notificacao
 elconsolto.com,masrawy.com##.notification
 metroworldnews.com.br##.notification-subs
+almanar.com.lb##.notification-wrap
 sport.ro##.notification-wrapper
 ozmall.co.jp##.oz__headApp
 mail.ru##.ph-balloo
@@ -794,6 +811,7 @@ actionnetwork.com##.promotion-card__container
 flvto.biz##.push-offer
 rd.fi##.region-sidebar-second-inner > .block-block
 diariandorra.ad##.subscribe-notifications
+thebeliever.net##.subscriber-popup-container
 news.mail.ru##.tooltip_width_huge
 actionnetwork.com##.user-component__trial
 sbt.com.br##.webpush
@@ -817,6 +835,7 @@ m.economictimes.com###appDwnldBanner
 m.aiscore.com###appLink
 brandeli.com###appbuner
 dtac.co.th###banner_dtacapp
+looopings.nl###blogAppbox
 gadgets360.com###bnotify
 nbcsandiego.com###branch-amp-journey
 deepl.com###callout-subtitle-chromeExtensionPromo
@@ -824,8 +843,10 @@ castbox.fm###channelAppBar
 deepl.com###dl_app_banner_popup
 map.baidu.com###downloadnativepopupUlink
 economictimes.indiatimes.com###float_app_ET
+codeur.com###follow-modal
 kogan.com###footer-native-banner
 mercari.com###getTheAppFooter
+patreon.com###half-sheet-app-banner
 ventusky.com###header > .ii[href]
 aliexpress.com###header-float-banner
 web.quizknock.com###header_iosapp_link
@@ -856,9 +877,12 @@ imgur.io##.Ad
 redfin.com##.AppInstallBannerWrapper
 reddit.com##.AppSelectorModal__body
 metservice.com##.Footer-section-image
+behance.net##.PrimaryNav-appLinkContainer-bhx
+airasia.com##.QRPopUp__QRPopUpWrapper-sc-8gx7le-0
 www.google.com##.QWEVge
 imgur.io##.ShareButtons-backdrop
 imgur.io##.ShareButtons-wrapper
+behance.net##.SimplifiedPushToMobilePrompt-root-Sct
 beebs.app##.SmartAppBanner-module__container___sK72V
 audi-sport.net##.TapatalkBanner_Container
 reddit.com##.TopNav__promoButton
@@ -879,7 +903,8 @@ skysports.com##.android-banner
 filmix.ac##.android-telegram-main
 coincodex.com##.app
 washingtonpost.com##.app-adoption-banner
-m.calciomercato.com,similarweb.com,spooncast.net,substack.com,whosampled.com##.app-banner
+m.calciomercato.com,mygwork.com,similarweb.com,spooncast.net,substack.com,whosampled.com##.app-banner
+mygwork.com##.app-banner--overlay
 republika.rs##.app-box
 financialexpress.com,indianexpress.com##.app-btn
 klook.com##.app-download
@@ -890,6 +915,7 @@ news.yahoo.com,tracker.gg##.app-promo
 atlasobscura.com##.app-store-heading
 banggood.com##.app-top-bar
 banggood.com##.app-top-height
+makemytrip.com##.appDnldCnt
 bleacherreport.com##.appInstallButton
 kijiji.ca##.appMarketingWrapper-909710043
 oilprice.com##.app_download_ad
@@ -934,7 +960,7 @@ cookpad.com##.css-1azakc
 neeva.com##.cta-search-result-result__extensionCTAContainer-4d4uV
 actionnetwork.com##.cta-wrapper__child
 kuow.org##.cta_download
-expedia.at,expedia.co.id,expedia.co.in,expedia.co.jp,expedia.co.kr,expedia.co.nz,expedia.co.th,expedia.co.uk,expedia.com,expedia.com.ar,expedia.com.au,expedia.com.hk,expedia.com.sg,expedia.de,expedia.dk,expedia.es,expedia.fi,expedia.fr,expedia.it,expedia.nl,expedia.no,expedia.se,hotels.com##.customer-notification-container
+expedia.at,expedia.co.id,expedia.co.in,expedia.co.jp,expedia.co.kr,expedia.co.nz,expedia.co.th,expedia.co.uk,expedia.com,expedia.com.ar,expedia.com.au,expedia.com.hk,expedia.com.sg,expedia.de,expedia.dk,expedia.es,expedia.fi,expedia.fr,expedia.it,expedia.nl,expedia.no,expedia.se,hotels.com,vrbo.com##.customer-notification-container
 ivoox.com##.d-flex.dark-gray-banner
 duckduckgo.com##.ddg-extension-hide
 dailyfx.com##.dfx-bottomFixedSlot
@@ -951,6 +977,7 @@ m.bilibilicomics.com##.download-popup
 caixinglobal.com##.downloadAPP
 cryptonews.net##.download_the_app
 zomato.com##.drRXJW
+al-sharq.com##.dwn-app
 actionnetwork.com##.e7h0b9a0
 probuilds.net##.experiment-height-expanded
 capitaloneshopping.com##.extension-modal
@@ -964,7 +991,7 @@ pink.rs##.footer-apps
 news24.com##.footer__app-links
 thepinknews.com##.footer__top-bar
 goobike.com##.gb_appbnrs
-citizen.com,coincodex.com##.get-app
+boredpanda.com,citizen.com,coincodex.com##.get-app
 imgur.io##.get-app-block
 coincodex.com##.get-app-wrapper
 citizen.com##.get-modal.modal
@@ -986,6 +1013,7 @@ news18.com##.instlsapp_fxd
 terabox.com##.introduce-sticky-btn
 tanp.jp##.js-appDownloadHeaderBanner
 duckduckgo.com##.js-open-in-app
+my.mintmobile.com##.justify-content-end.rounded-1.g-0.p-3
 sauna-ikitai.com##.l-headerApp
 ahchealthenews.com##.livewell-widget
 klarna.com##.ljtbes
@@ -1004,6 +1032,7 @@ discogs.com##.mobile-apps
 disk.yandex.com,disk.yandex.ru##.mobile-badges
 speedtest.net##.mobile-pretest
 speedtest.net##.mobile-pretest-2
+reddit.com##.mobile-web-redirect-bar
 malaysiaairlines.com##.mobileapp
 airtelkenya.com##.modal-content-popup
 speedtest.net##.modal-overlay
@@ -1049,6 +1078,7 @@ speedtest.net##.result-area-ad
 rekhta.org##.rt_AppBtn
 ticketmaster.com##.sc-16ox40n-1.eDwNYV
 geekdashboard.com##.section--download
+fdownload.app##.section-app-fb
 cbn.com##.section-region-sidebar
 investing.com##.seeThisInPopup
 comicsvalley.com##.sgpb-popup-dialog-main-div-wrapper
@@ -1083,6 +1113,7 @@ reddit.com##.upsell_banner
 9gag.com##.use-app
 actionnetwork.com##.user-component__trial-button
 ventusky.com##.vj
+walmart.ca##.w_6wTF
 walmart.com##.w_XgwP
 gadgets360.com##.web_dialog
 bisnis.com##.wrapper__ads-download
@@ -1113,18 +1144,18 @@ thescore.com##div[class^="GetTheApp__fullScreenContainerScrolldown--"]
 m.aliexpress.ru##div[class^="PseudoSmartBanner_"]
 kraken.com##div[class^="fc-94f32b27"]
 barandbench.com##div[class^="header-two-m__download-links_"]
+fedex.com##fedex-smart-banner
 twitter.com##header[role="banner"] > ._3oxnid3o._3f2NsD-H
 9animetv.to##img[alt="App Download"]
 google.ad,google.ae,google.al,google.am,google.as,google.at,google.az,google.ba,google.be,google.bf,google.bg,google.bi,google.bj,google.bs,google.bt,google.by,google.ca,google.cat,google.cd,google.cf,google.cg,google.ch,google.ci,google.cl,google.cm,google.cn,google.co.ao,google.co.bw,google.co.ck,google.co.cr,google.co.id,google.co.il,google.co.in,google.co.jp,google.co.ke,google.co.kr,google.co.ls,google.co.ma,google.co.mz,google.co.nz,google.co.th,google.co.tz,google.co.ug,google.co.uk,google.co.uz,google.co.ve,google.co.vi,google.co.za,google.co.zm,google.co.zw,google.com,google.com.af,google.com.ag,google.com.ai,google.com.ar,google.com.au,google.com.bd,google.com.bh,google.com.bn,google.com.bo,google.com.br,google.com.bz,google.com.co,google.com.cu,google.com.cy,google.com.do,google.com.ec,google.com.eg,google.com.et,google.com.fj,google.com.gh,google.com.gi,google.com.gt,google.com.hk,google.com.jm,google.com.kh,google.com.kw,google.com.lb,google.com.ly,google.com.mm,google.com.mt,google.com.mx,google.com.my,google.com.na,google.com.nf,google.com.ng,google.com.ni,google.com.np,google.com.om,google.com.pa,google.com.pe,google.com.pg,google.com.ph,google.com.pk,google.com.pr,google.com.py,google.com.qa,google.com.sa,google.com.sb,google.com.sg,google.com.sl,google.com.sv,google.com.tj,google.com.tr,google.com.tw,google.com.ua,google.com.uy,google.com.vc,google.com.vn,google.cv,google.cz,google.de,google.dj,google.dk,google.dm,google.dz,google.ee,google.es,google.fi,google.fm,google.fr,google.ga,google.ge,google.gg,google.gl,google.gm,google.gp,google.gr,google.gy,google.hn,google.hr,google.ht,google.hu,google.ie,google.im,google.iq,google.is,google.it,google.je,google.jo,google.kg,google.ki,google.kz,google.la,google.li,google.lk,google.lt,google.lu,google.lv,google.md,google.me,google.mg,google.mk,google.ml,google.mn,google.ms,google.mu,google.mv,google.mw,google.ne,google.nl,google.no,google.nr,google.nu,google.pl,google.pn,google.ps,google.pt,google.ro,google.rs,google.ru,google.rw,google.sc,google.se,google.sh,google.si,google.sk,google.sm,google.sn,google.so,google.sr,google.st,google.td,google.tg,google.tk,google.tl,google.tm,google.tn,google.to,google.tt,google.vg,google.vu,google.ws##mobile-promo
 weatherbug.net##smart-app-banner
+fedex.com##trk-shared-smart-app-banner
 voicy.jp##v-sp-download
 reddit.com##xpromo-top-button
 ! Advanced element hiding rules for Adblock Plus
 analyticsindiamag.com#?#.elementor-section-content-middle[data-settings="{\"background_background\":\"classic\"}"]:-abp-has(a[href^="https://play.google.com/store/apps"])
 
-
 ! *** easylist:fanboy-addon/fanboy_notifications_specific_uBO.txt ***
-! uBO-specific fixes
 downace.com##+js(acis, requestPermission)
 news18.com##+js(acis, serviceworker.register)
 ! International
@@ -1134,9 +1165,6 @@ puuilo.fi##body:style(overflow: auto !important)
 ! autoevolution.com
 autoevolution.com###notif_asker_div
 autoevolution.com##body,html:style(height: auto !important; overflow: auto !important)
-! nu.nl https://github.com/easylist/easylist/issues/10468
-nu.nl##.webpush-popup
-nu.nl##body,html:style(height: auto !important; overflow: auto !important)
 ! phonearena.com
 phonearena.com###pa-survey-modal
 phonearena.com##.pa-modal-backdrop
@@ -1153,19 +1181,27 @@ reddit.com##.XPromoPopup
 reddit.com##.XPromoPill
 reddit.com##shreddit-experience-tree
 reddit.com##+js(aeld, block-body-scrolling)
-reddit.com##body:style(overflow: auto !important;)
 reddit.com##body.scroll-disabled:style(overflow: visible!important; position: static!important;)
 reddit.com##.XPromoPopupRpl
 reddit.com##body:style(pointer-events:auto !important;)
 reddit.com##.XPromoInFeed
 amp.reddit.com##.AppSelectorModal__body
+reddit.com##+js(set-local-storage-item, xpromo-consolidation, 1)
+reddit.com##+js(rc, scroll-disabled, body, stay)
 amp.reddit.com##.upsell_banner
+!#if env_mobile
+reddit.com##body:style(overflow: auto !important;)
+!#endif
+! tiktok
+tiktok.com##+js(set-session-storage-item,webapp_first_open_cta, 1)
+tiktok.com##.e1pecv674.css-99ed1t-DivFooterGuide
+tiktok.com##.e1x4pa920.css-18fyv6p-DivFloatButtonWrapper
 ! .bottom-0.fixed
 newsbreak.com##.bottom-0.fixed
 newsbreak.com##body,html:style(overflow: auto !important; position: initial !important;)
 ! expedia.com
-:expedia.at,expedia.co.id,expedia.co.in,expedia.co.jp,expedia.co.kr,expedia.co.nz,expedia.co.th,expedia.co.uk,expedia.com.ar,expedia.com.au,expedia.com.hk,expedia.com.sg,expedia.de,expedia.dk,expedia.es,expedia.fi,expedia.fr,expedia.it,expedia.no,expedia.se,hotels.com,expedia.nl,expedia.com###app-layer-customer-notification-centered-sheet-dialog
-:expedia.at,expedia.co.id,expedia.co.in,expedia.co.jp,expedia.co.kr,expedia.co.nz,expedia.co.th,expedia.co.uk,expedia.com.ar,expedia.com.au,expedia.com.hk,expedia.com.sg,expedia.de,expedia.dk,expedia.es,expedia.fi,expedia.fr,expedia.it,expedia.no,expedia.se,hotels.com,expedia.nl,expedia.com##body,html:style(overflow: auto !important; position: initial !important;)
+expedia.at,expedia.co.id,expedia.co.in,expedia.co.jp,expedia.co.kr,expedia.co.nz,expedia.co.th,expedia.co.uk,expedia.com.ar,expedia.com.au,expedia.com.hk,expedia.com.sg,expedia.de,expedia.dk,expedia.es,expedia.fi,expedia.fr,expedia.it,expedia.no,expedia.se,hotels.com,expedia.nl,expedia.com###app-layer-customer-notification-centered-sheet-dialog
+expedia.at,expedia.co.id,expedia.co.in,expedia.co.jp,expedia.co.kr,expedia.co.nz,expedia.co.th,expedia.co.uk,expedia.com.ar,expedia.com.au,expedia.com.hk,expedia.com.sg,expedia.de,expedia.dk,expedia.es,expedia.fi,expedia.fr,expedia.it,expedia.no,expedia.se,hotels.com,expedia.nl,expedia.com##body,html:style(overflow: auto !important; position: initial !important;)
 ! rappler.com
 asia.nikkei.com,businesspost.ie,rappler.com##.tp-modal
 asia.nikkei.com,businesspost.ie,rappler.com##.tp-backdrop
@@ -1199,8 +1235,10 @@ wunderground.com##+js(rc, enable-sda, body, stay)
 m.economictimes.com###prominentOverlay
 m.economictimes.com##body,html:style(overflow: auto !important; position: initial !important;)
 ! m.yelp.com
-m.yelp.com##div[class^="overlay__09f24"]
-m.yelp.com##body,html:style(overflow: auto !important; position: initial !important;)
+m.yelp.com,m.yelp.co.uk,m.yelp.ca,m.yelp.com.au,m.yelp.co.nz,m.yelp.dk,m.yelp.de,m.yelp.fi,m.yelp.cz,m.yelp.fr,m.yelp.es,m.yelp.pt,m.yelp.it,m.yelp.no,m.yelp.se,m.yelp.ie,m.yelp.com.tr,m.yelp.com.br,m.yelp.nl,m.yelp.com.mx,m.yelp.co.jp,m.yelp.com.tw,m.yelp.be##div[class^="overlay__09f24"]
+m.yelp.com,m.yelp.co.uk,m.yelp.ca,m.yelp.com.au,m.yelp.co.nz,m.yelp.dk,m.yelp.de,m.yelp.fi,m.yelp.cz,m.yelp.fr,m.yelp.es,m.yelp.pt,m.yelp.it,m.yelp.no,m.yelp.se,m.yelp.ie,m.yelp.com.tr,m.yelp.com.br,m.yelp.nl,m.yelp.com.mx,m.yelp.co.jp,m.yelp.com.tw,m.yelp.be##body,html:style(overflow: auto !important; position: initial !important;)
+m.yelp.com,m.yelp.co.uk,m.yelp.ca,m.yelp.com.au,m.yelp.co.nz,m.yelp.dk,m.yelp.de,m.yelp.fi,m.yelp.cz,m.yelp.fr,m.yelp.es,m.yelp.pt,m.yelp.it,m.yelp.no,m.yelp.se,m.yelp.ie,m.yelp.com.tr,m.yelp.com.br,m.yelp.nl,m.yelp.com.mx,m.yelp.co.jp,m.yelp.com.tw,m.yelp.be##[aria-label*="Download the Yelp app"]
+m.yelp.com,m.yelp.co.uk,m.yelp.ca,m.yelp.com.au,m.yelp.co.nz,m.yelp.dk,m.yelp.de,m.yelp.fi,m.yelp.cz,m.yelp.fr,m.yelp.es,m.yelp.pt,m.yelp.it,m.yelp.no,m.yelp.se,m.yelp.ie,m.yelp.com.tr,m.yelp.com.br,m.yelp.nl,m.yelp.com.mx,m.yelp.co.jp,m.yelp.com.tw,m.yelp.be##[data-testid="OpenAppButton"]
 ! thedesignlove.com
 thedesignlove.com##.cp-overlay
 thedesignlove.com##body,html:style(overflow: auto !important; position: initial !important;)
@@ -1248,14 +1286,15 @@ m.webtoons.com##body,html:style(overflow: auto !important; position: initial !im
 insider.com,businessinsider.com##.in-app-banner
 insider.com,businessinsider.com##body:style(overflow: auto !important; position: initial !important;)
 insider.com,businessinsider.com##.app-button
+! makemytrip.com (mobile)
+makemytrip.com##.appDnldOffers
+makemytrip.com##.overlay-wrapper
+makemytrip.com##body:style(overflow: unset !important)
 ! thestar.com
 thestar.com##.kumulos-background-mask
 thestar.com##.kumulos-prompt
 thestar.com##body,html:style(overflow: auto !important; position: initial !important;)
 thestar.com##+js(rc, kumulos-background-mask-blur, , stay)
-! tunein.com
-tunein.com##.common-dialog-module__content___VMF7d
-tunein.com##div[style^="position: fixed; height: 100%; width: 100%; top: 0px;"]
 ! sports.ndtv.com
 sports.ndtv.com###__cricketsubscribe
 sports.ndtv.com###overlaybtn
@@ -1264,8 +1303,6 @@ sports.ndtv.com##body,html:style(overflow: auto !important; position: initial !i
 inews.hket.com##.app-redirect-panel
 inews.hket.com##+js(rc, no-scroll, html, stay)
 inews.hket.com###app-floating-button
-! rc, bottom-0
-walmart.com##+js(rc, bottom-0, , stay)
 ! jp-m.banggood.com (remove top empty space on mobile)
 jp-m.banggood.com##+js(rc,  show-app-bar, , stay)
 ! realestate.co.nz
@@ -1285,6 +1322,10 @@ emailnator.com##html,body:style(position: static !important; overflow: auto !imp
 emailnator.com##.top-banner
 ! m.investing.com (Collapse top)
 m.investing.com##.withAppBanner:style(top:0 !important)
+! vrbo.com
+vrbo.com###app-layer-customer-notification-centered-sheet-dialog
+vrbo.com##.layer-overlay-active
+vrbo.com##+js(rc, has-uitk-sheet, body, stay)
 ! similarweb.com (Collapse top)
 similarweb.com##+js(rc, app-banner-parent, body, stay)
 similarweb.com##.app-header:style(top:0 !important)
@@ -1295,24 +1336,26 @@ eksisozluk1923.com##body,html:style(overflow: auto !important; position: initial
 mydramalist.com##+js(rc, smartbanner-active, body)
 ! smocca.jp
 smocca.jp##+js(set, history.state, undefined)
+! patreon.com (mobile)
+patreon.com##+js(aeld, touchmove, preventDefault)
 !------------------------Rules for international sites------------------------!
 !---------------------------------Allowlists----------------------------------!
-
 ! *** easylist:fanboy-addon/fanboy_notifications_allowlist.txt ***
 @@||bostonherald.com^*/webpush.js$script,~third-party
 @@||braze.com/api/$domain=deezer.com
 @@||forums.opera.com/assets/src/modules/notifications.js$~third-party
 @@||inevent.com/js/wizard/pushNotification.js$script,~third-party
+@@||ledevoir.com/js/web-push.js$script,~third-party
 @@||oakley.com^*/notifications.js$~third-party
 @@||paste.crdroid.net/assets/js/modules/notifications.js$script,~third-party
 @@||snrcdn.net/sdk/3.0/synerise-javascript-sdk.min.js$domain=komputronik.pl
 @@||st.mycdn.me/static/*/WebPush.js$script,domain=ok.ru
 @@||webpush.jp/js/browserpushv3.js$domain=zakzak.co.jp
 ! Mobile Notifications
+@@||anadolu.edu.tr/assets/js/jquery.smartbanner.js$~third-party
 @@||assure.ameli.fr^*/smart-app-banner.js$~third-party
 @@||mafia.ua/js/jquery.smartbanner.js$script,~third-party
 @@||mirage.ru/js/jquery.smartbanner.js$script,~third-party
-
 
 ! *** easylist:fanboy-addon/fanboy_notifications_allowlist_general_hide.txt ***
 audionetwork.com,carlsenfritzoe.no#@##push-container:not(body):not(html)
@@ -1324,4 +1367,3 @@ rescuetime.com#@#.web-notification
 ! Mobile notifications
 mobi24.net#@#a[href^="http://www.mobi24.net/"]
 mobi24.net#@#a[href^="https://www.mobi24.net/"]
-
