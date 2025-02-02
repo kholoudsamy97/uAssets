@@ -8,7 +8,6 @@ https://raw.githubusercontent.com/reek/anti-adblock-killer/master/anti-adblock-k
 https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt
 https://easylist-msie.adblockplus.org/abp-filters-anti-cv.txt
 https://raw.githubusercontent.com/abp-filters/abp-filters-anti-cv/master/english.txt
-https://easylist-msie.adblockplus.org/antiadblockfilters.txt
 
 # https://github.com/uBlockOrigin/uBlock-issues/issues/971
 https://hosts-file.net/.%5Cad_servers.txt remove
@@ -25,10 +24,11 @@ https://www.joinhoney.com/whitelist/honey-smart-shopping.txt
 https://slickdeals.net/attachment/extension/allowlist.txt
 https://easylist-downloads.adblockplus.org/exceptionrules.txt
 https://letyshops.com/adblock.txt
-https://work.ink/adblock-whitelist.txt
 https://www.aadvantageeshopping.com/adBlockWhitelist.php
 https://multiup.org/list_adblock.txt
+https://multiup.io/list_adblock.txt
 https://downloads.zohocdn.com/ulaa-browser/release/adb/stable/ulaa-filters.txt
+https://cdn.dsbn.org/ublock_dsbn.txt
 
 # https://www.reddit.com/r/uBlockOrigin/comments/143k8lm/
 https://www.topcashback.co.uk/misc/AdBlockWhiteList.aspx
@@ -71,7 +71,19 @@ https://fuckfuckadblock.pages.dev/fuckfuckadblock.txt?_=3
 https://raw.githack.com/bogachenko/fuckfuckadblock/master/fuckfuckadblock.txt?_=3
 https://cdn.statically.io/gh/bogachenko/fuckfuckadblock/master/fuckfuckadblock.txt?_=3
 https://raw.githubusercontent.com/bogachenko/fuckfuckadblock/master/fuckfuckadblock.txt?_=3
+# https://www.reddit.com/r/uBlockOrigin/comments/1cl3qgh/ads_getting_through/
+https://raw.githubusercontent.com/bogachenko/fuckfuckadblock/master/fuckfuckadblock.txt?_=raw
+# https://github.com/uBlockOrigin/uAssets/issues/26120
+https://raw.githubusercontent.com/bogachenko/fuckfuckadblock/master/fuckfuckadblock.txt?_=rawlist
 
-! https://github.com/uBlockOrigin/uAssets/discussions/20627
-https://raw.githubusercontent.com/Apious/Ads_Filter_Contents/1st/Ads_Block_Contents.txt
-https://raw.githubusercontent.com/Apious/Ads_Filter_DNS/1st/Ads_Block_DNS.txt
+# interfere normal operation; generic exceptions to ad servers and analytics
+https://raw.githubusercontent.com/Apious/whoru/main/Source1.txt
+https://raw.githubusercontent.com/Apious/whoru/main/Source2.txt
+
+# Ad-Shield allowlist
+https://error-report.com/filter/allowlist
+
+# Not a list
+# https://www.reddit.com/r/uBlockOrigin/comments/1hcqkoe/ubo_breaking_oldredditres_and_youtube/
+https://raw.githubusercontent.com/pixeltris/TwitchAdSolutions/master/video-swap-new/video-swap-new-ublock-origin.js
+https://raw.githubusercontent.com/pixeltris/TwitchAdSolutions/master/vaft/vaft-ublock-origin.js
